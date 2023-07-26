@@ -1,5 +1,5 @@
-# DenoisingRec
-# main_coteaching直接运行即可，就是最好的版本Recall 0.0994-0.2345；NDCG 0.0853-0.1335
+# 2023/7/26: PLC_ours，直接运行即可取得超越T-CE的效果
+# main_coteaching直接运行即可，就是最好的Co-teaching版本Recall 0.0994-0.2345；NDCG 0.0853-0.1335
 
 Adaptive Denoising Training for Recommendation.
 
