@@ -1,0 +1,1365 @@
+目的：校正T-CE的效果
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[5, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 54.05539560317993
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.9973918199539185
+################### EVAL ######################
+Eval loss:79.46692657470703
+epoch: 2, iter: 2000, loss:0.285367876291275
+################### EVAL ######################
+Eval loss:91.7292709350586
+epoch: 3, iter: 3000, loss:0.3153955936431885
+################### EVAL ######################
+Eval loss:132.75172424316406
+epoch: 4, iter: 4000, loss:0.07586132735013962
+################### EVAL ######################
+Eval loss:149.1885528564453
+epoch: 6, iter: 5000, loss:0.6072483062744141
+################### EVAL ######################
+Eval loss:165.3681182861328
+epoch: 7, iter: 6000, loss:0.3643934428691864
+################### EVAL ######################
+Eval loss:168.7145538330078
+epoch: 8, iter: 7000, loss:0.1086895614862442
+################### EVAL ######################
+Eval loss:177.8778076171875
+epoch: 9, iter: 8000, loss:0.23358595371246338
+################### EVAL ######################
+Eval loss:218.98959350585938
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0859-0.2033
+NDCG 0.0758-0.1177
+目的：T-CE校正
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=2000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 2, iter: 2000, loss:0.06017216667532921
+################### EVAL ######################
+Eval loss:71.24056243896484
+epoch: 4, iter: 4000, loss:0.04398195818066597
+################### EVAL ######################
+Eval loss:89.07837677001953
+epoch: 7, iter: 6000, loss:0.023558681830763817
+################### EVAL ######################
+Eval loss:102.21096801757812
+epoch: 9, iter: 8000, loss:0.02346322126686573
+################### EVAL ######################
+Eval loss:112.72330474853516
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0914-0.2155
+NDCG 0.0779-0.1228
+目的：看看对0，1同时降噪
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=2000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 2, iter: 2000, loss:0.03437322378158569
+################### EVAL ######################
+Eval loss:68.23816680908203
+epoch: 4, iter: 4000, loss:0.008625378832221031
+################### EVAL ######################
+Eval loss:80.77003479003906
+epoch: 7, iter: 6000, loss:0.000512601574882865
+################### EVAL ######################
+Eval loss:87.33032989501953
+epoch: 9, iter: 8000, loss:0.00014749012188985944
+################### EVAL ######################
+Eval loss:87.63677978515625
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0863-0.2149
+NDCG 0.0738-0.1209
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=2000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 2, iter: 2000, loss:11.623007774353027
+################### EVAL ######################
+Eval loss:65.47639465332031
+epoch: 4, iter: 4000, loss:4.604731559753418
+################### EVAL ######################
+Eval loss:78.34625244140625
+epoch: 7, iter: 6000, loss:2.200519561767578
+################### EVAL ######################
+Eval loss:95.71609497070312
+epoch: 9, iter: 8000, loss:0.636078953742981
+################### EVAL ######################
+Eval loss:121.6826171875
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0860-0.2132
+NDCG 0.0738-0.1199
+目的：看看对0，1同时降噪
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=14, eval_freq=2000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 2, iter: 2000, loss:11.623007774353027
+################### EVAL ######################
+Eval loss:65.47639465332031
+epoch: 4, iter: 4000, loss:4.604731559753418
+################### EVAL ######################
+Eval loss:78.34625244140625
+epoch: 7, iter: 6000, loss:2.200519561767578
+################### EVAL ######################
+Eval loss:95.71609497070312
+epoch: 9, iter: 8000, loss:0.636078953742981
+################### EVAL ######################
+Eval loss:121.6826171875
+epoch: 12, iter: 10000, loss:0.2856924831867218
+################### EVAL ######################
+Eval loss:151.37203979492188
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0860-0.2132
+NDCG 0.0738-0.1199
+目的：看看对0，1同时降噪
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=2000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+目的：看看对0，1同时降噪
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=2000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 54.50057888031006
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+lgn is ready to go(dropout:0)
+epoch: 1, iter: 1000, loss:0.19963723421096802
+################### EVAL ######################
+Eval loss:61.88072204589844
+epoch: 1, iter: 1000, loss:0.08389720320701599
+################### EVAL ######################
+Eval loss:56.07951354980469
+epoch: 2, iter: 2000, loss:0.07615935057401657
+################### EVAL ######################
+Eval loss:71.08577728271484
+epoch: 2, iter: 2000, loss:0.04243340343236923
+################### EVAL ######################
+Eval loss:73.24691009521484
+epoch: 3, iter: 3000, loss:0.0360010527074337
+################### EVAL ######################
+Eval loss:78.91061401367188
+epoch: 3, iter: 3000, loss:0.0171953234821558
+################### EVAL ######################
+Eval loss:112.32295989990234
+epoch: 4, iter: 4000, loss:0.054570991545915604
+################### EVAL ######################
+Eval loss:85.16557312011719
+epoch: 4, iter: 4000, loss:0.015718979761004448
+################### EVAL ######################
+Eval loss:160.91883850097656
+epoch: 6, iter: 5000, loss:0.041579440236091614
+################### EVAL ######################
+Eval loss:90.99059295654297
+epoch: 6, iter: 5000, loss:0.013386945240199566
+################### EVAL ######################
+Eval loss:205.99688720703125
+epoch: 7, iter: 6000, loss:0.025210998952388763
+################### EVAL ######################
+Eval loss:95.88673400878906
+epoch: 7, iter: 6000, loss:0.004951985087245703
+################### EVAL ######################
+Eval loss:216.2602996826172
+epoch: 8, iter: 7000, loss:0.05119018256664276
+################### EVAL ######################
+Eval loss:99.48006439208984
+epoch: 8, iter: 7000, loss:0.019327856600284576
+################### EVAL ######################
+Eval loss:249.1568603515625
+epoch: 9, iter: 8000, loss:0.03574248030781746
+################### EVAL ######################
+Eval loss:102.13904571533203
+epoch: 9, iter: 8000, loss:0.00574361952021718
+################### EVAL ######################
+Eval loss:271.0021057128906
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0912-0.2171
+NDCG 0.0783-0.1241
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 57.6016309261322
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.18485680222511292
+################### EVAL ######################
+Eval loss:62.30814743041992
+epoch: 1, iter: 1000, loss:0.1848139762878418
+################### EVAL ######################
+Eval loss:62.39670181274414
+epoch: 2, iter: 2000, loss:0.07787840068340302
+################### EVAL ######################
+Eval loss:71.7992172241211
+epoch: 2, iter: 2000, loss:0.07747626304626465
+################### EVAL ######################
+Eval loss:71.69855499267578
+epoch: 3, iter: 3000, loss:0.0704454556107521
+################### EVAL ######################
+Eval loss:81.37224578857422
+epoch: 3, iter: 3000, loss:0.06999828666448593
+################### EVAL ######################
+Eval loss:81.22650146484375
+epoch: 4, iter: 4000, loss:0.03735833242535591
+################### EVAL ######################
+Eval loss:88.95433807373047
+epoch: 4, iter: 4000, loss:0.03712717443704605
+################### EVAL ######################
+Eval loss:89.29778289794922
+epoch: 6, iter: 5000, loss:0.024680349975824356
+################### EVAL ######################
+Eval loss:95.96334838867188
+epoch: 6, iter: 5000, loss:0.024792663753032684
+################### EVAL ######################
+Eval loss:95.30669403076172
+epoch: 7, iter: 6000, loss:0.022997763007879257
+################### EVAL ######################
+Eval loss:102.39545440673828
+epoch: 7, iter: 6000, loss:0.022977326065301895
+################### EVAL ######################
+Eval loss:101.87108612060547
+epoch: 8, iter: 7000, loss:0.01818600296974182
+################### EVAL ######################
+Eval loss:107.80583953857422
+epoch: 8, iter: 7000, loss:0.018980897963047028
+################### EVAL ######################
+Eval loss:105.95807647705078
+epoch: 9, iter: 8000, loss:0.0184345506131649
+################### EVAL ######################
+Eval loss:113.46394348144531
+epoch: 9, iter: 8000, loss:0.018750477582216263
+################### EVAL ######################
+Eval loss:109.76326751708984
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0913-0.2197
+NDCG 0.0787-0.1253
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.2, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 55.14126133918762
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.18485680222511292
+################### EVAL ######################
+Eval loss:63.786643981933594
+epoch: 1, iter: 1000, loss:0.1848139762878418
+################### EVAL ######################
+Eval loss:63.913822174072266
+epoch: 2, iter: 2000, loss:0.07787840068340302
+################### EVAL ######################
+Eval loss:78.5907211303711
+epoch: 2, iter: 2000, loss:0.07747626304626465
+################### EVAL ######################
+Eval loss:78.6448745727539
+epoch: 3, iter: 3000, loss:0.0704454556107521
+################### EVAL ######################
+Eval loss:94.10539245605469
+epoch: 3, iter: 3000, loss:0.06999828666448593
+################### EVAL ######################
+Eval loss:94.00685119628906
+epoch: 4, iter: 4000, loss:0.03735833242535591
+################### EVAL ######################
+Eval loss:107.94676971435547
+epoch: 4, iter: 4000, loss:0.03712717443704605
+################### EVAL ######################
+Eval loss:108.35615539550781
+epoch: 6, iter: 5000, loss:0.024680349975824356
+################### EVAL ######################
+Eval loss:121.71632385253906
+epoch: 6, iter: 5000, loss:0.024792663753032684
+################### EVAL ######################
+Eval loss:120.97247314453125
+epoch: 7, iter: 6000, loss:0.022997763007879257
+################### EVAL ######################
+Eval loss:134.47059631347656
+epoch: 7, iter: 6000, loss:0.022977326065301895
+################### EVAL ######################
+Eval loss:133.93280029296875
+epoch: 8, iter: 7000, loss:0.01818600296974182
+################### EVAL ######################
+Eval loss:146.55606079101562
+epoch: 8, iter: 7000, loss:0.018980897963047028
+################### EVAL ######################
+Eval loss:144.7965850830078
+epoch: 9, iter: 8000, loss:0.0184345506131649
+################### EVAL ######################
+Eval loss:158.16342163085938
+epoch: 9, iter: 8000, loss:0.018750477582216263
+################### EVAL ######################
+Eval loss:154.87425231933594
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0913-0.2197
+NDCG 0.0787-0.1253
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 54.456263303756714
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.19721044600009918
+################### EVAL ######################
+Eval loss:63.7613410949707
+epoch: 1, iter: 1000, loss:0.19401000440120697
+################### EVAL ######################
+Eval loss:63.61671829223633
+epoch: 2, iter: 2000, loss:0.07048536092042923
+################### EVAL ######################
+Eval loss:78.55926513671875
+epoch: 2, iter: 2000, loss:0.06963356584310532
+################### EVAL ######################
+Eval loss:78.26094055175781
+epoch: 3, iter: 3000, loss:0.0371672622859478
+################### EVAL ######################
+Eval loss:92.6875991821289
+epoch: 3, iter: 3000, loss:0.03800157085061073
+################### EVAL ######################
+Eval loss:92.16674041748047
+epoch: 4, iter: 4000, loss:0.04528316482901573
+################### EVAL ######################
+Eval loss:106.41840362548828
+epoch: 4, iter: 4000, loss:0.044172950088977814
+################### EVAL ######################
+Eval loss:106.98601531982422
+epoch: 6, iter: 5000, loss:0.023926248773932457
+################### EVAL ######################
+Eval loss:120.3923568725586
+epoch: 6, iter: 5000, loss:0.024441152811050415
+################### EVAL ######################
+Eval loss:120.50586700439453
+epoch: 7, iter: 6000, loss:0.039915554225444794
+################### EVAL ######################
+Eval loss:134.24725341796875
+epoch: 7, iter: 6000, loss:0.040079254657030106
+################### EVAL ######################
+Eval loss:134.20794677734375
+epoch: 8, iter: 7000, loss:0.0244071576744318
+################### EVAL ######################
+Eval loss:145.7809600830078
+epoch: 8, iter: 7000, loss:0.024485670030117035
+################### EVAL ######################
+Eval loss:145.96926879882812
+epoch: 9, iter: 8000, loss:0.01793232187628746
+################### EVAL ######################
+Eval loss:157.57765197753906
+epoch: 9, iter: 8000, loss:0.01732451096177101
+################### EVAL ######################
+Eval loss:158.74501037597656
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0910-0.2153
+NDCG 0.0776-0.1225
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model_1='GMF', model_2='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model_1='GMF', model_2='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 54.54339861869812
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model_1='GMF', model_2='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 53.81487989425659
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model_1='GMF', model_2='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 55.55739879608154
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.18485680222511292
+################### EVAL ######################
+Eval loss:63.786643981933594
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model_1='GMF', model_2='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 53.764344930648804
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.18485680222511292
+################### EVAL ######################
+Eval loss:63.786643981933594
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model_1='GMF', model_2='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 54.0430121421814
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.18485680222511292
+################### EVAL ######################
+Eval loss:63.786643981933594
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model_1='GMF', model_2='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 57.36625027656555
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.18485680222511292
+################### EVAL ######################
+Eval loss:63.786643981933594
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model_1='GMF', model_2='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 54.15123200416565
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.18485680222511292
+################### EVAL ######################
+Eval loss:63.786643981933594
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model_1='GMF', model_2='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 63.75948882102966
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.18485680222511292
+################### EVAL ######################
+Eval loss:63.786643981933594
+epoch: 1, iter: 1000, loss:0.1848139762878418
+################### EVAL ######################
+Eval loss:63.913822174072266
+epoch: 2, iter: 2000, loss:0.07787840068340302
+################### EVAL ######################
+Eval loss:78.5907211303711
+epoch: 2, iter: 2000, loss:0.07747626304626465
+################### EVAL ######################
+Eval loss:78.6448745727539
+epoch: 3, iter: 3000, loss:0.0704454556107521
+################### EVAL ######################
+Eval loss:94.10539245605469
+epoch: 3, iter: 3000, loss:0.06999828666448593
+################### EVAL ######################
+Eval loss:94.00685119628906
+epoch: 4, iter: 4000, loss:0.03735833242535591
+################### EVAL ######################
+Eval loss:107.94676971435547
+epoch: 4, iter: 4000, loss:0.03712717443704605
+################### EVAL ######################
+Eval loss:108.35615539550781
+epoch: 6, iter: 5000, loss:0.024680349975824356
+################### EVAL ######################
+Eval loss:121.71632385253906
+epoch: 6, iter: 5000, loss:0.024792663753032684
+################### EVAL ######################
+Eval loss:120.97247314453125
+epoch: 7, iter: 6000, loss:0.022997763007879257
+################### EVAL ######################
+Eval loss:134.47059631347656
+epoch: 7, iter: 6000, loss:0.022977326065301895
+################### EVAL ######################
+Eval loss:133.93280029296875
+epoch: 8, iter: 7000, loss:0.01818600296974182
+################### EVAL ######################
+Eval loss:146.55606079101562
+epoch: 8, iter: 7000, loss:0.018980897963047028
+################### EVAL ######################
+Eval loss:144.7965850830078
+epoch: 9, iter: 8000, loss:0.0184345506131649
+################### EVAL ######################
+Eval loss:158.16342163085938
+epoch: 9, iter: 8000, loss:0.018750477582216263
+################### EVAL ######################
+Eval loss:154.87425231933594
+############################## Training End. ##############################
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model_1='GMF', model_2='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 53.69996738433838
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model_1='GMF', model_2='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 65.53010702133179
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.18485680222511292
+################### EVAL ######################
+Eval loss:63.786643981933594
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model_1='GMF', model_2='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 68.9733419418335
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model_1='GMF', model_2='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 71.45822477340698
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.18485680222511292
+################### EVAL ######################
+Eval loss:63.786643981933594
+epoch: 1, iter: 1000, loss:0.1848139762878418
+################### EVAL ######################
+Eval loss:63.913822174072266
+epoch: 2, iter: 2000, loss:0.07787840068340302
+################### EVAL ######################
+Eval loss:78.5907211303711
+epoch: 2, iter: 2000, loss:0.07747626304626465
+################### EVAL ######################
+Eval loss:78.6448745727539
+epoch: 3, iter: 3000, loss:0.0704454556107521
+################### EVAL ######################
+Eval loss:94.10539245605469
+epoch: 3, iter: 3000, loss:0.06999828666448593
+################### EVAL ######################
+Eval loss:94.00685119628906
+epoch: 4, iter: 4000, loss:0.03735833242535591
+################### EVAL ######################
+Eval loss:107.94676971435547
+epoch: 4, iter: 4000, loss:0.03712717443704605
+################### EVAL ######################
+Eval loss:108.35615539550781
+epoch: 6, iter: 5000, loss:0.024680349975824356
+################### EVAL ######################
+Eval loss:121.71632385253906
+epoch: 6, iter: 5000, loss:0.024792663753032684
+################### EVAL ######################
+Eval loss:120.97247314453125
+epoch: 7, iter: 6000, loss:0.022997763007879257
+################### EVAL ######################
+Eval loss:134.47059631347656
+epoch: 7, iter: 6000, loss:0.022977326065301895
+################### EVAL ######################
+Eval loss:133.93280029296875
+epoch: 8, iter: 7000, loss:0.01818600296974182
+################### EVAL ######################
+Eval loss:146.55606079101562
+epoch: 8, iter: 7000, loss:0.018980897963047028
+################### EVAL ######################
+Eval loss:144.7965850830078
+epoch: 9, iter: 8000, loss:0.0184345506131649
+################### EVAL ######################
+Eval loss:158.16342163085938
+epoch: 9, iter: 8000, loss:0.018750477582216263
+################### EVAL ######################
+Eval loss:154.87425231933594
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0913-0.2197
+NDCG 0.0787-0.1253
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model_1='GMF', model_2='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20, 50, 100]) 
+config model GMF
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 53.898576974868774
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.18485680222511292
+################### EVAL ######################
+Eval loss:63.786643981933594
+epoch: 1, iter: 1000, loss:0.1848139762878418
+################### EVAL ######################
+Eval loss:63.913822174072266
+epoch: 2, iter: 2000, loss:0.07787840068340302
+################### EVAL ######################
+Eval loss:78.5907211303711
+epoch: 2, iter: 2000, loss:0.07747626304626465
+################### EVAL ######################
+Eval loss:78.6448745727539
+epoch: 3, iter: 3000, loss:0.0704454556107521
+################### EVAL ######################
+Eval loss:94.10539245605469
+epoch: 3, iter: 3000, loss:0.06999828666448593
+################### EVAL ######################
+Eval loss:94.00685119628906
+epoch: 4, iter: 4000, loss:0.03735833242535591
+################### EVAL ######################
+Eval loss:107.94676971435547
+epoch: 4, iter: 4000, loss:0.03712717443704605
+################### EVAL ######################
+Eval loss:108.35615539550781
+epoch: 6, iter: 5000, loss:0.024680349975824356
+################### EVAL ######################
+Eval loss:121.71632385253906
+epoch: 6, iter: 5000, loss:0.024792663753032684
+################### EVAL ######################
+Eval loss:120.97247314453125
+epoch: 7, iter: 6000, loss:0.022997763007879257
+################### EVAL ######################
+Eval loss:134.47059631347656
+epoch: 7, iter: 6000, loss:0.022977326065301895
+################### EVAL ######################
+Eval loss:133.93280029296875
+epoch: 8, iter: 7000, loss:0.01818600296974182
+################### EVAL ######################
+Eval loss:146.55606079101562
+epoch: 8, iter: 7000, loss:0.018980897963047028
+################### EVAL ######################
+Eval loss:144.7965850830078
+epoch: 9, iter: 8000, loss:0.0184345506131649
+################### EVAL ######################
+Eval loss:158.16342163085938
+epoch: 9, iter: 8000, loss:0.018750477582216263
+################### EVAL ######################
+Eval loss:154.87425231933594
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0913-0.2197-0.2585-0.3919
+NDCG 0.0787-0.1253-0.1350-0.1594
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 53.93975377082825
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.9973918199539185
+################### EVAL ######################
+Eval loss:79.46692657470703
+epoch: 2, iter: 2000, loss:0.285367876291275
+################### EVAL ######################
+Eval loss:91.7292709350586
+epoch: 3, iter: 3000, loss:0.3153955936431885
+################### EVAL ######################
+Eval loss:132.75172424316406
+epoch: 4, iter: 4000, loss:0.07586132735013962
+################### EVAL ######################
+Eval loss:149.1885528564453
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 54.10342788696289
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.9973918199539185
+################### EVAL ######################
+Eval loss:79.46692657470703
+epoch: 2, iter: 2000, loss:0.285367876291275
+################### EVAL ######################
+Eval loss:91.7292709350586
+epoch: 3, iter: 3000, loss:0.3153955936431885
+################### EVAL ######################
+Eval loss:132.75172424316406
+epoch: 4, iter: 4000, loss:0.07586132735013962
+################### EVAL ######################
+Eval loss:149.1885528564453
+epoch: 6, iter: 5000, loss:0.6072483062744141
+################### EVAL ######################
+Eval loss:165.3681182861328
+epoch: 7, iter: 6000, loss:0.3643934428691864
+################### EVAL ######################
+Eval loss:168.7145538330078
+epoch: 8, iter: 7000, loss:0.1086895614862442
+################### EVAL ######################
+Eval loss:177.8778076171875
+epoch: 9, iter: 8000, loss:0.23358595371246338
+################### EVAL ######################
+Eval loss:218.98959350585938
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0061-0.0415
+NDCG 0.0050-0.0170
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 53.92615532875061
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+epoch: 1, iter: 1000, loss:0.9973918199539185
+################### EVAL ######################
+Eval loss:79.46692657470703
+epoch: 2, iter: 2000, loss:0.285367876291275
+################### EVAL ######################
+Eval loss:91.7292709350586
+epoch: 3, iter: 3000, loss:0.3153955936431885
+################### EVAL ######################
+Eval loss:132.75172424316406
+epoch: 4, iter: 4000, loss:0.07586132735013962
+################### EVAL ######################
+Eval loss:149.1885528564453
+epoch: 6, iter: 5000, loss:0.6072483062744141
+################### EVAL ######################
+Eval loss:165.3681182861328
+epoch: 7, iter: 6000, loss:0.3643934428691864
+################### EVAL ######################
+Eval loss:168.7145538330078
+epoch: 8, iter: 7000, loss:0.1086895614862442
+################### EVAL ######################
+Eval loss:177.8778076171875
+epoch: 9, iter: 8000, loss:0.23358595371246338
+################### EVAL ######################
+Eval loss:218.98959350585938
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0859-0.2033
+NDCG 0.0758-0.1177
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 54.69092535972595
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+################### TEST ######################
+Recall 0.0889-0.2171
+NDCG 0.0790-0.1247
+################### TEST ######################
+Recall 0.0024-0.0244
+NDCG 0.0022-0.0094
+################### TEST ######################
+Recall 0.0019-0.0138
+NDCG 0.0017-0.0055
+################### TEST ######################
+Recall 0.0142-0.0609
+NDCG 0.0126-0.0284
+################### TEST ######################
+Recall 0.0013-0.0142
+NDCG 0.0012-0.0054
+################### TEST ######################
+Recall 0.0138-0.0550
+NDCG 0.0120-0.0261
+################### TEST ######################
+Recall 0.0006-0.0082
+NDCG 0.0005-0.0030
+################### TEST ######################
+Recall 0.0117-0.0506
+NDCG 0.0098-0.0231
+################### TEST ######################
+Recall 0.0006-0.0064
+NDCG 0.0006-0.0024
+################### TEST ######################
+Recall 0.0094-0.0463
+NDCG 0.0081-0.0205
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0859-0.2033
+NDCG 0.0758-0.1177
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 63.41330051422119
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+################### TEST ######################
+Recall 0.0889-0.2171
+NDCG 0.0790-0.1247
+################### TEST ######################
+Recall 0.0024-0.0244
+NDCG 0.0022-0.0094
+################### TEST ######################
+Recall 0.0019-0.0138
+NDCG 0.0017-0.0055
+################### TEST ######################
+Recall 0.0142-0.0609
+NDCG 0.0126-0.0284
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 61.736958026885986
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+################### TEST ######################
+Recall 0.0900-0.2188
+NDCG 0.0801-0.1259
+epoch: 1, iter: 1000, loss:0.9973918199539185
+################### EVAL ######################
+Eval loss:79.46692657470703
+################### TEST ######################
+Recall 0.0069-0.0332
+NDCG 0.0061-0.0148
+epoch: 2, iter: 2000, loss:0.285367876291275
+################### EVAL ######################
+Eval loss:91.7292709350586
+################### TEST ######################
+Recall 0.0015-0.0119
+NDCG 0.0012-0.0045
+epoch: 3, iter: 3000, loss:0.3153955936431885
+################### EVAL ######################
+Eval loss:132.75172424316406
+################### TEST ######################
+Recall 0.0168-0.0650
+NDCG 0.0144-0.0311
+epoch: 4, iter: 4000, loss:0.07586132735013962
+################### EVAL ######################
+Eval loss:149.1885528564453
+################### TEST ######################
+Recall 0.0011-0.0122
+NDCG 0.0010-0.0046
+################### TEST ######################
+Recall 0.0107-0.0587
+NDCG 0.0092-0.0258
+epoch: 6, iter: 5000, loss:0.6072483062744141
+################### EVAL ######################
+Eval loss:165.3681182861328
+################### TEST ######################
+Recall 0.0005-0.0077
+NDCG 0.0005-0.0029
+epoch: 7, iter: 6000, loss:0.3643934428691864
+################### EVAL ######################
+Eval loss:168.7145538330078
+################### TEST ######################
+Recall 0.0079-0.0493
+NDCG 0.0065-0.0208
+epoch: 8, iter: 7000, loss:0.1086895614862442
+################### EVAL ######################
+Eval loss:177.8778076171875
+################### TEST ######################
+Recall 0.0004-0.0070
+NDCG 0.0004-0.0027
+epoch: 9, iter: 8000, loss:0.23358595371246338
+################### EVAL ######################
+Eval loss:218.98959350585938
+################### TEST ######################
+Recall 0.0061-0.0415
+NDCG 0.0050-0.0170
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0859-0.2033
+NDCG 0.0758-0.1177
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 57.308939695358276
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 57.40464806556702
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+################### TEST ######################
+Recall 0.0350-0.0805
+NDCG 0.0294-0.0453
+epoch: 1, iter: 1000, loss:0.10717251896858215
+################### EVAL ######################
+Eval loss:131.39720153808594
+################### TEST ######################
+Recall 0.0335-0.0806
+NDCG 0.0283-0.0450
+epoch: 2, iter: 2000, loss:0.01455855555832386
+################### EVAL ######################
+Eval loss:223.24234008789062
+################### TEST ######################
+Recall 0.0331-0.0801
+NDCG 0.0280-0.0448
+epoch: 3, iter: 3000, loss:0.003969673998653889
+################### EVAL ######################
+Eval loss:275.4418029785156
+################### TEST ######################
+Recall 0.0327-0.0798
+NDCG 0.0277-0.0445
+epoch: 4, iter: 4000, loss:0.0016636837972328067
+################### EVAL ######################
+Eval loss:306.2472839355469
+################### TEST ######################
+Recall 0.0322-0.0791
+NDCG 0.0273-0.0442
+################### TEST ######################
+Recall 0.0321-0.0790
+NDCG 0.0273-0.0441
+epoch: 6, iter: 5000, loss:0.0005288658430799842
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 56.459211111068726
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 56.48887610435486
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 53.76922273635864
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+################### TEST ######################
+Recall 0.0351-0.0806
+NDCG 0.0296-0.0454
+epoch: 1, iter: 1000, loss:0.10680389404296875
+################### EVAL ######################
+Eval loss:131.48764038085938
+################### TEST ######################
+Recall 0.0338-0.0804
+NDCG 0.0285-0.0450
+epoch: 2, iter: 2000, loss:0.014467302709817886
+################### EVAL ######################
+Eval loss:223.31979370117188
+################### TEST ######################
+Recall 0.0329-0.0800
+NDCG 0.0279-0.0447
+epoch: 3, iter: 3000, loss:0.003907789010554552
+################### EVAL ######################
+Eval loss:275.39825439453125
+################### TEST ######################
+Recall 0.0324-0.0797
+NDCG 0.0275-0.0445
+epoch: 4, iter: 4000, loss:0.0016342935850843787
+################### EVAL ######################
+Eval loss:306.1447448730469
+################### TEST ######################
+Recall 0.0323-0.0791
+NDCG 0.0274-0.0442
+################### TEST ######################
+Recall 0.0321-0.0788
+NDCG 0.0273-0.0441
+epoch: 6, iter: 5000, loss:0.0005308834952302277
+################### EVAL ######################
+Eval loss:330.27142333984375
+################### TEST ######################
+Recall 0.0319-0.0787
+NDCG 0.0271-0.0440
+epoch: 7, iter: 6000, loss:0.00023344880901277065
+################### EVAL ######################
+Eval loss:350.1451721191406
+################### TEST ######################
+Recall 0.0317-0.0787
+NDCG 0.0270-0.0440
+epoch: 8, iter: 7000, loss:0.00013472529826685786
+################### EVAL ######################
+Eval loss:368.5763244628906
+################### TEST ######################
+Recall 0.0317-0.0786
+NDCG 0.0270-0.0439
+epoch: 9, iter: 8000, loss:8.311670535476878e-05
+################### EVAL ######################
+Eval loss:385.642822265625
+################### TEST ######################
+Recall 0.0315-0.0783
+NDCG 0.0269-0.0437
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0352-0.0805
+NDCG 0.0297-0.0455
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 144.90365958213806
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+################### TEST ######################
+Recall 0.0899-0.2190
+NDCG 0.0801-0.1259
+epoch: 1, iter: 1000, loss:0.9983131289482117
+################### EVAL ######################
+Eval loss:79.45751953125
+################### TEST ######################
+Recall 0.0052-0.0303
+NDCG 0.0049-0.0133
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 145.7228126525879
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+################### TEST ######################
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20, 50, 100]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+################### TEST ######################
+Recall 0.0897-0.2169-0.2552-0.3911
+NDCG 0.0793-0.1248-0.1343-0.1589
+epoch: 1, iter: 1000, loss:0.23279789090156555
+################### EVAL ######################
+Eval loss:63.67507553100586
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20, 50, 100]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+################### TEST ######################
+Recall 0.0897-0.2169-0.2552-0.3911
+NDCG 0.0793-0.1248-0.1343-0.1589
+epoch: 1, iter: 1000, loss:0.23279789090156555
+################### EVAL ######################
+Eval loss:63.67507553100586
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20, 50, 100]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+################### TEST ######################
+Recall 0.0897-0.2169-0.2552-0.3911
+NDCG 0.0793-0.1248-0.1343-0.1589
+epoch: 1, iter: 1000, loss:0.23279789090156555
+################### EVAL ######################
+Eval loss:63.67507553100586
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20, 50, 100]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+################### TEST ######################
+Recall 0.0897-0.2169-0.2552-0.3911
+NDCG 0.0793-0.1248-0.1343-0.1589
+epoch: 1, iter: 1000, loss:0.23279789090156555
+################### EVAL ######################
+Eval loss:63.67507553100586
+################### TEST ######################
+Recall 0.0907-0.2151-0.2550-0.4020
+NDCG 0.0773-0.1235-0.1335-0.1608
+epoch: 2, iter: 2000, loss:0.08621831983327866
+################### EVAL ######################
+Eval loss:77.0014419555664
+################### TEST ######################
+Recall 0.0896-0.2126-0.2560-0.4401
+NDCG 0.0765-0.1221-0.1328-0.1667
+epoch: 3, iter: 3000, loss:0.04158024117350578
+################### EVAL ######################
+Eval loss:91.19100189208984
+################### TEST ######################
+Recall 0.0888-0.2115-0.2531-0.4342
+NDCG 0.0759-0.1207-0.1310-0.1641
+epoch: 4, iter: 4000, loss:0.059730298817157745
+################### EVAL ######################
+Eval loss:107.46310424804688
+################### TEST ######################
+Recall 0.0878-0.2117-0.2534-0.4323
+NDCG 0.0755-0.1208-0.1310-0.1637
+################### TEST ######################
+Recall 0.0864-0.2109-0.2532-0.4329
+NDCG 0.0743-0.1189-0.1292-0.1617
+epoch: 6, iter: 5000, loss:0.046880193054676056
+################### EVAL ######################
+Eval loss:128.24786376953125
+################### TEST ######################
+Recall 0.0866-0.2120-0.2518-0.3914
+NDCG 0.0744-0.1199-0.1298-0.1554
+epoch: 7, iter: 6000, loss:0.03919651359319687
+################### EVAL ######################
+Eval loss:155.58673095703125
+################### TEST ######################
+Recall 0.0857-0.2109-0.2523-0.3839
+NDCG 0.0760-0.1211-0.1314-0.1551
+epoch: 8, iter: 7000, loss:0.05763360857963562
+################### EVAL ######################
+Eval loss:185.35128784179688
+################### TEST ######################
+Recall 0.0863-0.2102-0.2516-0.3735
+NDCG 0.0762-0.1211-0.1314-0.1535
+epoch: 9, iter: 8000, loss:0.024012327194213867
+################### EVAL ######################
+Eval loss:211.4231414794922
+################### TEST ######################
+Recall 0.0852-0.2114-0.2513-0.3693
+NDCG 0.0755-0.1209-0.1307-0.1522
+############################## Training End. ##############################
+arguments: Namespace(batch_size=1024, dataset='adressa', drop_rate=0.2, dropout=0.0, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, top_k=[3, 20, 50, 100]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/DenoisingRec/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+################### TEST ######################
+Recall 0.0897-0.2169-0.2552-0.3911
+NDCG 0.0793-0.1248-0.1343-0.1589
+epoch: 1, iter: 1000, loss:0.23279789090156555
+################### EVAL ######################
+Eval loss:63.67507553100586
+################### TEST ######################
+Recall 0.0907-0.2151-0.2550-0.4020
+NDCG 0.0773-0.1235-0.1335-0.1608
+epoch: 2, iter: 2000, loss:0.08621831983327866
+################### EVAL ######################
+Eval loss:77.0014419555664
+################### TEST ######################
+Recall 0.0896-0.2126-0.2560-0.4401
+NDCG 0.0765-0.1221-0.1328-0.1667
+epoch: 3, iter: 3000, loss:0.04158024117350578
+################### EVAL ######################
+Eval loss:91.19100189208984
+################### TEST ######################
+Recall 0.0888-0.2115-0.2531-0.4342
+NDCG 0.0759-0.1207-0.1310-0.1641
+epoch: 4, iter: 4000, loss:0.059730298817157745
+################### EVAL ######################
+Eval loss:107.46310424804688
+################### TEST ######################
+Recall 0.0878-0.2117-0.2534-0.4323
+NDCG 0.0755-0.1208-0.1310-0.1637
+################### TEST ######################
+Recall 0.0864-0.2109-0.2532-0.4329
+NDCG 0.0743-0.1189-0.1292-0.1617
+epoch: 6, iter: 5000, loss:0.046880193054676056
+################### EVAL ######################
+Eval loss:128.24786376953125
+################### TEST ######################
+Recall 0.0866-0.2120-0.2518-0.3914
+NDCG 0.0744-0.1199-0.1298-0.1554
+epoch: 7, iter: 6000, loss:0.03919651359319687
+################### EVAL ######################
+Eval loss:155.58673095703125
+################### TEST ######################
+Recall 0.0857-0.2109-0.2523-0.3839
+NDCG 0.0760-0.1211-0.1314-0.1551
+epoch: 8, iter: 7000, loss:0.05763360857963562
+################### EVAL ######################
+Eval loss:185.35128784179688
+################### TEST ######################
+Recall 0.0863-0.2102-0.2516-0.3735
+NDCG 0.0762-0.1211-0.1314-0.1535
+epoch: 9, iter: 8000, loss:0.024012327194213867
+################### EVAL ######################
+Eval loss:211.4231414794922
+################### TEST ######################
+Recall 0.0852-0.2114-0.2513-0.3693
+NDCG 0.0755-0.1209-0.1307-0.1522
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.0911-0.2163-0.2558-0.3933
+NDCG 0.0782-0.1242-0.1340-0.1592
