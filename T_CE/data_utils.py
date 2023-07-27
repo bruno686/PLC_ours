@@ -44,7 +44,7 @@ def create_adj_mat(mat, user_num, item_num):
 	return norm_adj_mat
 
 def load_all(dataset, data_path):
-	data_path = '/home/hezhuangzhuang/DenoisingRec-main/data/' + dataset + '/'
+	data_path = '/home/hezhuangzhuang/PLC_ours/data/' + dataset + '/'
 	train_rating = data_path + '{}.train.rating'.format(dataset)
 	valid_rating = data_path + '{}.valid.rating'.format(dataset)
 	test_negative = data_path + '{}.test.negative'.format(dataset)

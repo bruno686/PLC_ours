@@ -18,7 +18,7 @@ import lightgcn
 import evaluate
 import data_utils
 from bootstrap import BCE_soft,BootstrapCrossEntropy, HardBootstrappingLoss, Per_BootstrapCrossEntropy,BCE_hard
-from loss import loss_function, loss_function_co_teaching, PLC
+from loss import loss_function, loss_function_co_teaching, PLC, PLC_uncertain
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 parser = argparse.ArgumentParser()
@@ -64,7 +64,7 @@ parser.add_argument("--eval_freq",
 	help="the freq of eval")
 parser.add_argument("--top_k", 
 	type=list, 
-	default=[3, 10, 20, 50, 100],
+	default=[5, 10, 20, 50, 100],
 	help="compute metrics@top_k")
 parser.add_argument("--factor_num", 
 	type=int,
@@ -85,10 +85,22 @@ parser.add_argument("--gpu",
 	type=str,
 	default="1",
 	help="gpu card ID")
+parser.add_argument('--time_step', 
+	type=int, 
+	default=3, 	
+	help='time_step')
+parser.add_argument('--co_lambda', 
+	type=float, 
+	help='sigma^2', 
+	default=1e-4)
+parser.add_argument('--epoch_decay_start', 
+	type=int, 
+	default=4)
 args = parser.parse_args()
 
+
 wandb.login
-wandb.init(project="PLC", config=args, notes=args.dataset + args.model)
+wandb.init(project="PLC", config=args, notes='Loss_Uncertainty'+args.dataset + args.model)
 
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 cudnn.benchmark = True
@@ -103,9 +115,8 @@ def worker_init_fn(worker_id):
     np.random.seed(2019 + worker_id)
 
 sys.stdout = open('/home/hezhuangzhuang/PLC_ours/T_CE/loggg.log', 'a')
-
 data_path = '../data/{}/'.format(args.dataset)
-model_path = '/home/hezhuangzhuang/DenoisingRec/T_CE/models/{}/'.format(args.dataset)
+model_path = '/home/hezhuangzhuang/PLC_ours/T_CE/models/{}/'.format(args.dataset)
 print("arguments: %s " %(args))
 print("config model", args.model)
 print("config data path", data_path)
@@ -150,6 +161,7 @@ model = model.NCF(user_num, item_num, args.factor_num, args.num_layers,
 
 model.cuda()
 BCE_loss = nn.BCEWithLogitsLoss()
+co_lambda_plan = args.co_lambda * np.linspace(1, 0, args.epoch_decay_start) 
 
 if args.model == 'NeuMF-pre':
     optimizer = optim.SGD(model.parameters(), lr=args.lr)
@@ -200,12 +212,12 @@ def test(model, test_data_pos, user_pos):
 	print("Recall {:.4f}-{:.4f}-{:.4f}-{:.4f}-{:.4f}".format(recall[0], recall[1], recall[2], recall[3], recall[4]))
 	print("NDCG {:.4f}-{:.4f}-{:.4f}-{:.4f}-{:.4f}".format(NDCG[0], NDCG[1], NDCG[2], NDCG[3], recall[4]))
 	wandb.log({
-	"Recall@3": recall[0],
+	"Recall@5": recall[0],
 	"Recall@10": recall[1],
 	"Recall@20": recall[2],
 	"Recall@50": recall[3],
 	"Recall@100": recall[4],
-	"NDCG@3": NDCG[0],
+	"NDCG@5": NDCG[0],
 	"NDCG@10": NDCG[1],
 	"NDCG@20": NDCG[2],
 	"NDCG@50": NDCG[3],
@@ -217,37 +229,31 @@ best_loss = 1e9
 best_loss_2 = 1e9
 
 
-# inter_matrix = train_mat
-
-# Convert the dok_matrix to a PyTorch sparse tensor
-# sparse_tensor = torch.sparse_coo_tensor(
-#     torch.tensor(list(inter_matrix.keys())).t(),
-#     torch.tensor([inter_matrix[i] for i in inter_matrix.keys()]),
-#     size=inter_matrix.shape
-# ).cuda()
-
-
 for epoch in range(args.epochs):
+	if epoch % args.time_step == 0:
+		print('Time step initializing...')
+		before_loss = 0.0 * np.ones((len(train_dataset), 1))
+		sn = torch.from_numpy(np.ones((len(train_dataset), 1)))
 	model.train()
 
 	start_time = time.time()
 	train_loader.dataset.ng_sample()
+	before_loss_list=[]	
 
-	for user, item, label, noisy_or_not in train_loader:
+	for i, (user, item, label, noisy_or_not) in enumerate(train_loader):
 		user = user.cuda()
 		item = item.cuda()
-  
-		# # Extract elements from specific indices
-		# indices = torch.tensor([[0, 1], [0, 1]])
-		# result = sparse_tensor[indices[0], indices[1]]
-		# print(result.to_dense())  # Convert back to dense tensor for printing  
+		start_point = int(i * args.batch_size)
+		stop_point = int((i + 1) * args.batch_size)
 
 		label = torch.tensor(train_mat[user.cpu().numpy().tolist(), item.cpu().numpy().tolist()].todense()).squeeze().cuda()
-		# label = torch.tensor(inter_matrix[user.cpu().numpy().tolist(), item.cpu().numpy().tolist()]).squeeze().cuda()
 
 		model.zero_grad()
 		prediction = model(user, item)
-		loss, train_adj = PLC(user, item, train_mat, prediction, label, drop_rate_schedule(count))
+
+		loss, train_adj, loss_mean = PLC_uncertain(user, item, train_mat, prediction, label, drop_rate_schedule(count), epoch, sn[start_point:stop_point], before_loss[start_point:stop_point], co_lambda_plan[epoch])
+		before_loss_list += list(np.array(loss_mean.detach().cpu()))
+  
 		train_mat = train_adj
 		loss.backward()
 		optimizer.step()
@@ -261,6 +267,7 @@ for epoch in range(args.epochs):
 			"iter": count,
 			"loss": loss})
 		count += 1
+	before_loss = np.array(before_loss_list).astype(float)
 	test(model, test_data_pos, user_pos)
 
 
