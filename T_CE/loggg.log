@@ -1496,3 +1496,123 @@ Eval loss:83.78285217285156
 ################### TEST ######################
 Recall 0.1241-0.1864-0.2106-0.2518-0.4300
 NDCG 0.0920-0.1149-0.1221-0.1322-0.4300
+arguments: Namespace(batch_size=1024, co_lambda=0.0001, dataset='adressa', drop_rate=0.2, dropout=0.0, epoch_decay_start=4, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='NeuMF-end', num_gradual=30000, num_layers=3, num_ng=1, out=True, time_step=3, top_k=[5, 10, 20, 50, 100]) 
+config model NeuMF-end
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/PLC_ours/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+Time step initializing...
+################### TEST ######################
+Recall 0.1814-0.2854-0.3111-0.3581-0.5544
+NDCG 0.1381-0.1756-0.1834-0.1951-0.5544
+epoch: 1, iter: 1000, loss:0.07674999535083771
+arguments: Namespace(batch_size=1024, co_lambda=0.0001, dataset='adressa', drop_rate=0.2, dropout=0.0, epoch_decay_start=4, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, time_step=3, top_k=[5, 10, 20, 50, 100]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/PLC_ours/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+Time step initializing...
+################### TEST ######################
+Recall 0.1187-0.1902-0.2169-0.2552-0.3911
+NDCG 0.0906-0.1167-0.1248-0.1343-0.3911
+epoch: 1, iter: 1000, loss:0.232791930437088
+################### EVAL ######################
+Eval loss:63.678001403808594
+################### TEST ######################
+Recall 0.1323-0.1921-0.2151-0.2552-0.4014
+NDCG 0.0945-0.1166-0.1235-0.1335-0.4014
+epoch: 2, iter: 2000, loss:0.0912383422255516
+################### EVAL ######################
+Eval loss:76.7773208618164
+################### TEST ######################
+Recall 0.1273-0.1900-0.2112-0.2558-0.4398
+NDCG 0.0917-0.1148-0.1211-0.1321-0.4398
+Time step initializing...
+epoch: 3, iter: 3000, loss:0.04771232232451439
+################### EVAL ######################
+Eval loss:89.3576431274414
+################### TEST ######################
+Recall 0.1236-0.1862-0.2105-0.2524-0.4341
+NDCG 0.0895-0.1125-0.1198-0.1301-0.4341
+arguments: Namespace(batch_size=1024, co_lambda=0.0001, dataset='adressa', drop_rate=0.2, dropout=0.0, epoch_decay_start=4, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, time_step=3, top_k=[5, 10, 20, 50, 100]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/PLC_ours/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+Time step initializing...
+arguments: Namespace(batch_size=1024, co_lambda=0.0001, dataset='adressa', drop_rate=0.2, dropout=0.0, epoch_decay_start=4, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, time_step=3, top_k=[5, 10, 20, 50, 100]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/PLC_ours/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+Time step initializing...
+325.0
+################### TEST ######################
+Recall 0.1187-0.1902-0.2169-0.2552-0.3911
+NDCG 0.0906-0.1167-0.1248-0.1343-0.3911
+epoch: 1, iter: 1000, loss:0.232791930437088
+################### EVAL ######################
+Eval loss:63.678001403808594
+325.0
+################### TEST ######################
+Recall 0.1323-0.1921-0.2151-0.2552-0.4014
+NDCG 0.0945-0.1166-0.1235-0.1335-0.4014
+epoch: 2, iter: 2000, loss:0.0912383422255516
+################### EVAL ######################
+Eval loss:76.7773208618164
+324.0
+################### TEST ######################
+Recall 0.1273-0.1900-0.2112-0.2558-0.4398
+NDCG 0.0917-0.1148-0.1211-0.1321-0.4398
+Time step initializing...
+epoch: 3, iter: 3000, loss:0.04771232232451439
+arguments: Namespace(batch_size=1024, co_lambda=0.0001, dataset='adressa', drop_rate=0.2, dropout=0.0, epoch_decay_start=4, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, time_step=3, top_k=[5, 10, 20, 50, 100]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/PLC_ours/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+Time step initializing...
+arguments: Namespace(batch_size=1024, co_lambda=0.0001, dataset='adressa', drop_rate=0.2, dropout=0.0, epoch_decay_start=4, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, time_step=3, top_k=[5, 10, 20, 50, 100]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/PLC_ours/T_CE/models/adressa/
+user, item num
+212231 6596
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+Time step initializing...
+325.0
+################### TEST ######################
+Recall 0.1187-0.1902-0.2169-0.2552-0.3911
+NDCG 0.0906-0.1167-0.1248-0.1343-0.3911
+epoch: 1, iter: 1000, loss:0.232791930437088
+################### EVAL ######################
+Eval loss:63.678001403808594
+325.0
+################### TEST ######################
+Recall 0.1323-0.1921-0.2151-0.2552-0.4014
+NDCG 0.0945-0.1166-0.1235-0.1335-0.4014
+epoch: 2, iter: 2000, loss:0.0912383422255516
+################### EVAL ######################
+Eval loss:76.7773208618164
+324.0
+################### TEST ######################
+Recall 0.1273-0.1900-0.2112-0.2558-0.4398
+NDCG 0.0917-0.1148-0.1211-0.1321-0.4398
+Time step initializing...
+epoch: 3, iter: 3000, loss:0.04771232232451439
+################### EVAL ######################
+Eval loss:89.3576431274414
+324.0
+################### TEST ######################
+Recall 0.1236-0.1862-0.2105-0.2524-0.4341
+NDCG 0.0895-0.1125-0.1198-0.1301-0.4341

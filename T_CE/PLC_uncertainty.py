@@ -245,14 +245,16 @@ for epoch in range(args.epochs):
 		item = item.cuda()
 		start_point = int(i * args.batch_size)
 		stop_point = int((i + 1) * args.batch_size)
+		ind_update_list = []
 
 		label = torch.tensor(train_mat[user.cpu().numpy().tolist(), item.cpu().numpy().tolist()].todense()).squeeze().cuda()
 
 		model.zero_grad()
 		prediction = model(user, item)
 
-		loss, train_adj, loss_mean = PLC_uncertain(user, item, train_mat, prediction, label, drop_rate_schedule(count), epoch, sn[start_point:stop_point], before_loss[start_point:stop_point], co_lambda_plan[epoch])
+		loss, train_adj, loss_mean, ind_update = PLC_uncertain(user, item, train_mat, prediction, label, drop_rate_schedule(count), epoch, sn[start_point:stop_point], before_loss[start_point:stop_point], co_lambda_plan[epoch])
 		before_loss_list += list(np.array(loss_mean.detach().cpu()))
+		ind_update_list += list(np.array(ind_update.cpu() + i * args.batch_size))
   
 		train_mat = train_adj
 		loss.backward()
@@ -268,6 +270,10 @@ for epoch in range(args.epochs):
 			"loss": loss})
 		count += 1
 	before_loss = np.array(before_loss_list).astype(float)
+	all_zero_array = np.zeros((len(train_dataset), 1))
+	all_zero_array[np.array(ind_update_list)] = 1
+	print(np.sum(all_zero_array))
+	sn += torch.from_numpy(all_zero_array)
 	test(model, test_data_pos, user_pos)
 
 
