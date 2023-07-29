@@ -25,7 +25,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', 
 	type = str,
 	help = 'dataset used for training, options: amazon_book, yelp, adressa',
-	default = 'adressa')
+	default = 'amazon_book')
 parser.add_argument('--model', 
 	type = str,
 	help = 'model used for training. options: GMF, NeuMF-end',
@@ -64,7 +64,7 @@ parser.add_argument("--eval_freq",
 	help="the freq of eval")
 parser.add_argument("--top_k", 
 	type=list, 
-	default=[5, 10, 20, 50, 100],
+	default=[5, 10, 20, 50],
 	help="compute metrics@top_k")
 parser.add_argument("--factor_num", 
 	type=int,
@@ -100,7 +100,7 @@ args = parser.parse_args()
 
 
 wandb.login
-wandb.init(project="PLC", config=args, notes='Loss_Uncertainty'+args.dataset + args.model)
+wandb.init(project="PLC_ours", config=args, notes='PLC_Uncertainty')
 
 os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 cudnn.benchmark = True
@@ -127,7 +127,7 @@ print("config model path", model_path)
 train_data, valid_data, test_data_pos, user_pos, user_num ,item_num, train_mat, train_data_noisy = data_utils.load_all(args.dataset, data_path)
 
 # 不需要邻接矩阵，这不全错了
-# train_adj = data_utils.create_adj_mat(train_mat, user_num, item_num)
+train_adj = data_utils.create_adj_mat(train_mat, user_num, item_num)
 
 # construct the train and test datasets
 train_dataset = data_utils.NCFData(
@@ -155,8 +155,14 @@ else:
 	GMF_model = None
 	MLP_model = None
 
-model = model.NCF(user_num, item_num, args.factor_num, args.num_layers, 
-						args.dropout, args.model, GMF_model, MLP_model)
+if args.model == 'GMF' or 'NeuMF-end':
+    model = model.NCF(user_num, item_num, args.factor_num, args.num_layers, 
+                    args.dropout, args.model, GMF_model, MLP_model)
+elif args.model == 'CDAE':
+    model = model.CDAE(user_num, item_num, hidden_dim=32, device="cuda",
+                 corruption_ratio=0.5, act='tanh')
+else:
+    model = model.LightGCN(user_num, item_num, train_adj, args.factor_num, args.num_layers)
 
 
 model.cuda()
@@ -209,19 +215,17 @@ def test(model, test_data_pos, user_pos):
 	_, recall, NDCG, _ = evaluate.test_all_users(model, 4096, item_num, test_data_pos, user_pos, top_k)
 
 	print("################### TEST ######################")
-	print("Recall {:.4f}-{:.4f}-{:.4f}-{:.4f}-{:.4f}".format(recall[0], recall[1], recall[2], recall[3], recall[4]))
-	print("NDCG {:.4f}-{:.4f}-{:.4f}-{:.4f}-{:.4f}".format(NDCG[0], NDCG[1], NDCG[2], NDCG[3], recall[4]))
+	print("Recall {:.4f}-{:.4f}-{:.4f}-{:.4f}".format(recall[0], recall[1], recall[2], recall[3]))
+	print("NDCG {:.4f}-{:.4f}-{:.4f}-{:.4f}".format(NDCG[0], NDCG[1], NDCG[2], NDCG[3]))
 	wandb.log({
 	"Recall@5": recall[0],
 	"Recall@10": recall[1],
 	"Recall@20": recall[2],
 	"Recall@50": recall[3],
-	"Recall@100": recall[4],
 	"NDCG@5": NDCG[0],
 	"NDCG@10": NDCG[1],
 	"NDCG@20": NDCG[2],
-	"NDCG@50": NDCG[3],
- 	"Recall@100": recall[4]})
+	"NDCG@50": NDCG[3]})
 
 ########################### TRAINING #####################################
 count, best_hr = 0, 0
@@ -250,7 +254,10 @@ for epoch in range(args.epochs):
 		label = torch.tensor(train_mat[user.cpu().numpy().tolist(), item.cpu().numpy().tolist()].todense()).squeeze().cuda()
 
 		model.zero_grad()
-		prediction = model(user, item)
+		if model == 'CDAE':
+			prediction = model(user, train_mat) 
+		else:
+			prediction = model(user, item)
 
 		loss, train_adj, loss_mean, ind_update = PLC_uncertain(user, item, train_mat, prediction, label, drop_rate_schedule(count), epoch, sn[start_point:stop_point], before_loss[start_point:stop_point], co_lambda_plan[epoch])
 		before_loss_list += list(np.array(loss_mean.detach().cpu()))
@@ -274,8 +281,8 @@ for epoch in range(args.epochs):
 	all_zero_array[np.array(ind_update_list)] = 1
 	print(np.sum(all_zero_array))
 	sn += torch.from_numpy(all_zero_array)
-	test(model, test_data_pos, user_pos)
-
+	if epoch == 9:
+		test(model, test_data_pos, user_pos)
 
 print("############################## Training End. ##############################")
 test_model = torch.load('{}{}_{}-{}.pth'.format(model_path, args.model, args.drop_rate, args.num_gradual))
