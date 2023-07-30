@@ -1729,3 +1729,160 @@ Eval loss:391.4996643066406
 ################### TEST ######################
 Recall 0.0106-0.0184-0.0308-0.0595
 NDCG 0.0101-0.0126-0.0164-0.0239
+arguments: Namespace(batch_size=1024, co_lambda=0.0001, dataset='adressa', drop_rate=0.2, dropout=0.0, epoch_decay_start=4, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, time_step=3, top_k=[5, 10, 20, 50]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/PLC_ours/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 60.591041564941406
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+Time step initializing...
+325.0
+epoch: 1, iter: 1000, loss:0.232791930437088
+################### EVAL ######################
+Eval loss:63.678001403808594
+325.0
+epoch: 2, iter: 2000, loss:0.0912383422255516
+arguments: Namespace(batch_size=1024, co_lambda=0.0001, dataset='adressa', drop_rate=0.2, dropout=0.0, epoch_decay_start=4, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, time_step=1, top_k=[5, 10, 20, 50]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/PLC_ours/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 64.99444341659546
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+Time step initializing...
+arguments: Namespace(batch_size=1024, co_lambda=0.0001, dataset='adressa', drop_rate=0.2, dropout=0.0, epoch_decay_start=4, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, time_step=1, top_k=[5, 10, 20, 50]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/PLC_ours/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 61.90718102455139
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+Time step initializing...
+837930.0
+Time step initializing...
+epoch: 1, iter: 1000, loss:0.23279789090156555
+################### EVAL ######################
+Eval loss:63.67507553100586
+836876.0
+Time step initializing...
+epoch: 2, iter: 2000, loss:0.08621831983327866
+################### EVAL ######################
+Eval loss:77.0014419555664
+835707.0
+Time step initializing...
+epoch: 3, iter: 3000, loss:0.04158024117350578
+################### EVAL ######################
+Eval loss:91.19100189208984
+834536.0
+Time step initializing...
+arguments: Namespace(batch_size=1024, co_lambda=0.0001, dataset='adressa', drop_rate=0.2, dropout=0.0, epoch_decay_start=4, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, time_step=1, top_k=[5, 10, 20, 50]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/PLC_ours/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 60.59152555465698
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+Time step initializing...
+837930.0
+Time step initializing...
+epoch: 1, iter: 1000, loss:0.23279789090156555
+################### EVAL ######################
+Eval loss:63.67507553100586
+836876.0
+Time step initializing...
+epoch: 2, iter: 2000, loss:0.08621831983327866
+################### EVAL ######################
+Eval loss:77.0014419555664
+835707.0
+Time step initializing...
+epoch: 3, iter: 3000, loss:0.04158024117350578
+################### EVAL ######################
+Eval loss:91.19100189208984
+834536.0
+Time step initializing...
+arguments: Namespace(batch_size=1024, co_lambda=0.0001, dataset='adressa', drop_rate=0.2, dropout=0.0, epoch_decay_start=8, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, time_step=3, top_k=[5, 10, 20, 50]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/PLC_ours/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 61.37617588043213
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+Time step initializing...
+837930.0
+epoch: 1, iter: 1000, loss:0.232791930437088
+################### EVAL ######################
+Eval loss:63.678001403808594
+836876.0
+epoch: 2, iter: 2000, loss:0.0912383422255516
+################### EVAL ######################
+Eval loss:76.7773208618164
+835707.0
+Time step initializing...
+epoch: 3, iter: 3000, loss:0.047714054584503174
+################### EVAL ######################
+Eval loss:89.35812377929688
+834536.0
+epoch: 4, iter: 4000, loss:0.09211335331201553
+################### EVAL ######################
+Eval loss:99.04131317138672
+833482.0
+832198.0
+Time step initializing...
+epoch: 6, iter: 5000, loss:0.08166661113500595
+################### EVAL ######################
+Eval loss:106.72771453857422
+831142.0
+epoch: 7, iter: 6000, loss:0.09116905927658081
+################### EVAL ######################
+Eval loss:128.7088165283203
+829976.0
+arguments: Namespace(batch_size=1024, co_lambda=0.0001, dataset='adressa', drop_rate=0.2, dropout=0.0, epoch_decay_start=9, epochs=10, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, time_step=3, top_k=[5, 10, 20, 50]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/PLC_ours/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 59.65595889091492
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+Time step initializing...
+837930.0
+epoch: 1, iter: 1000, loss:0.232791930437088
+################### EVAL ######################
+Eval loss:63.678001403808594
+836876.0
+epoch: 2, iter: 2000, loss:0.0912383422255516
+################### EVAL ######################
+Eval loss:76.7773208618164
+835707.0
+Time step initializing...
+epoch: 3, iter: 3000, loss:0.047714054584503174
+################### EVAL ######################
+Eval loss:89.35812377929688
+834536.0
+arguments: Namespace(batch_size=1024, co_lambda=0.0001, dataset='adressa', drop_rate=0.2, dropout=0.0, epoch_decay_start=10, epochs=1, eval_freq=1000, exponent=1, factor_num=32, gpu='1', lr=0.001, model='GMF', num_gradual=30000, num_layers=3, num_ng=1, out=True, time_step=3, top_k=[5, 10, 20, 50]) 
+config model GMF
+config data path ../data/adressa/
+config model path /home/hezhuangzhuang/PLC_ours/T_CE/models/adressa/
+user, item num
+212231 6596
+already create adjacency matrix (218827, 218827) 60.45893692970276
+generate single-normalized adjacency matrix.
+data loaded! user_num:212231, item_num:6596 train_data_len:419491 test_user_num:10380
+Time step initializing...
+837930.0
+############################## Training End. ##############################
+################### TEST ######################
+Recall 0.1296-0.1904-0.2162-0.2558
+NDCG 0.0938-0.1164-0.1242-0.1340

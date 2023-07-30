@@ -25,7 +25,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', 
 	type = str,
 	help = 'dataset used for training, options: amazon_book, yelp, adressa',
-	default = 'amazon_book')
+	default = 'yelp')
 parser.add_argument('--model', 
 	type = str,
 	help = 'model used for training. options: GMF, NeuMF-end',
@@ -56,7 +56,7 @@ parser.add_argument("--batch_size",
 	help="batch size for training")
 parser.add_argument("--epochs", 
 	type=int,
-	default=10,
+	default=1,
 	help="training epoches")
 parser.add_argument("--eval_freq", 
 	type=int,
@@ -95,7 +95,7 @@ parser.add_argument('--co_lambda',
 	default=1e-4)
 parser.add_argument('--epoch_decay_start', 
 	type=int, 
-	default=4)
+	default=10)
 args = parser.parse_args()
 
 
@@ -167,7 +167,7 @@ else:
 
 model.cuda()
 BCE_loss = nn.BCEWithLogitsLoss()
-co_lambda_plan = args.co_lambda * np.linspace(1, 0, args.epoch_decay_start) 
+co_lambda_plan = args.co_lambda * np.linspace(1, 0, args.epochs) 
 
 if args.model == 'NeuMF-pre':
     optimizer = optim.SGD(model.parameters(), lr=args.lr)
@@ -243,13 +243,13 @@ for epoch in range(args.epochs):
 	start_time = time.time()
 	train_loader.dataset.ng_sample()
 	before_loss_list=[]	
+	ind_update_list = []
 
 	for i, (user, item, label, noisy_or_not) in enumerate(train_loader):
 		user = user.cuda()
 		item = item.cuda()
 		start_point = int(i * args.batch_size)
 		stop_point = int((i + 1) * args.batch_size)
-		ind_update_list = []
 
 		label = torch.tensor(train_mat[user.cpu().numpy().tolist(), item.cpu().numpy().tolist()].todense()).squeeze().cuda()
 
