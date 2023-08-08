@@ -10,7 +10,7 @@ def soft_process(loss):
     soft_loss = torch.log(1+loss+loss*loss/2)
     return soft_loss
 
-def PLC_uncertain(user, item, train_mat, y, t, drop_rate, epoch, sn, before_loss, co_lambda):
+def PLC_uncertain_discard(user, item, train_mat, y, t, drop_rate, epoch, sn, before_loss, co_lambda, relabel_ratio):
     before_loss = torch.from_numpy(before_loss).cuda().float().squeeze()
     
     s = torch.tensor(epoch + 1).float() # as the epoch starts from 0
@@ -28,19 +28,15 @@ def PLC_uncertain(user, item, train_mat, y, t, drop_rate, epoch, sn, before_loss
     loss_sorted = loss[ind_sorted]
 
     remember_rate = 1 - drop_rate
-    
+    num_remember = int(remember_rate * len(loss_sorted))
     # 筛选最高的其中一部分loss，重新打上标签，并加入训练集中训练
-    #全部翻转
-    # highest_ind_sorted = ind_sorted[int(remember_rate*len(loss_sorted)):]
-    #翻转10%
-    # highest_ind_sorted = ind_sorted[int((0.9+0.1*remember_rate)*len(loss_sorted)):]
-    #翻转50%
-    # highest_ind_sorted = ind_sorted[int((0.5+0.5*remember_rate)*len(loss_sorted)):]
-    #翻转75%
-    # highest_ind_sorted = ind_sorted[int((0.25+0.75*remember_rate)*len(loss_sorted)):]
-    #翻转最高的25%s
-    highest_ind_sorted = ind_sorted[int((0.75+0.25*remember_rate)*len(loss_sorted)):]
-    lowest_ind_sorted = ind_sorted[:int((0.75+0.25*remember_rate)*len(loss_sorted))]
+    highest_ind_sorted = ind_sorted[int(((1-relabel_ratio)+relabel_ratio*remember_rate)*len(loss_sorted)):]
+    # 示例：翻转25%
+    # highest_ind_sorted = ind_sorted[int((0.75+0.25*remember_rate)*len(loss_sorted)):]
+    saved_ind_sorted = ind_sorted[:num_remember]
+    final_ind = torch.concat((highest_ind_sorted, saved_ind_sorted))
+
+    lowest_ind_sorted = ind_sorted[:int(((1-relabel_ratio)+relabel_ratio*remember_rate)*len(loss_sorted))]
     
     # 翻转loss高的部分samles的标签，只把0改成1
     if len(highest_ind_sorted) > 0:
@@ -49,16 +45,26 @@ def PLC_uncertain(user, item, train_mat, y, t, drop_rate, epoch, sn, before_loss
         train_mat[user[highest_ind_sorted].cpu().numpy().tolist(), item[highest_ind_sorted].cpu().numpy().tolist()] = t[highest_ind_sorted].cpu().numpy()
 
     t = torch.tensor(train_mat[user.cpu().numpy().tolist(), item.cpu().numpy().tolist()].todense()).squeeze().cuda()
-    loss_update = F.binary_cross_entropy_with_logits(y, t)
+    loss_update = F.binary_cross_entropy_with_logits(y[final_ind], t[final_ind])
     
-    return loss_update, train_mat, loss_mean, lowest_ind_sorted
+    return loss_update, train_mat, loss_mean, lowest_ind_sorted    
 
 
-
-def PLC(user, item, train_mat, y, t, drop_rate):
+def PLC_uncertain(user, item, train_mat, y, t, drop_rate, epoch, sn, before_loss, co_lambda, relabel_ratio):
+    before_loss = torch.from_numpy(before_loss).cuda().float().squeeze()
+    
+    s = torch.tensor(epoch + 1).float() # as the epoch starts from 0
+    co_lambda = torch.tensor(co_lambda).float()    
     loss = F.binary_cross_entropy_with_logits(y, t, reduce = False)
-
     loss_mul = loss * t
+    loss_mul = soft_process(loss_mul)
+    
+    loss_mean = (before_loss * s + loss_mul) / (s + 1)
+    # loss_mean = (before_loss * s + loss_mul) / s
+    confidence_bound = co_lambda * (s + (co_lambda * torch.log(2 * s)) / (s * s)) / ((sn + 1) - co_lambda)
+    confidence_bound = confidence_bound.squeeze()
+    loss_mul = F.relu(loss_mul.float() - confidence_bound.cuda().float())
+    
     ind_sorted = np.argsort(loss_mul.cpu().data).cuda()
     loss_sorted = loss[ind_sorted]
 
@@ -74,7 +80,8 @@ def PLC(user, item, train_mat, y, t, drop_rate):
     #翻转75%
     # highest_ind_sorted = ind_sorted[int((0.25+0.75*remember_rate)*len(loss_sorted)):]
     #翻转最高的25%s
-    highest_ind_sorted = ind_sorted[int((0.75+0.25*remember_rate)*len(loss_sorted)):]
+    highest_ind_sorted = ind_sorted[int(((1-relabel_ratio)+relabel_ratio*remember_rate)*len(loss_sorted)):]
+    lowest_ind_sorted = ind_sorted[:int(((1-relabel_ratio)+relabel_ratio*remember_rate)*len(loss_sorted))]
     
     # 翻转loss高的部分samles的标签，只把0改成1
     if len(highest_ind_sorted) > 0:
@@ -84,6 +91,69 @@ def PLC(user, item, train_mat, y, t, drop_rate):
 
     t = torch.tensor(train_mat[user.cpu().numpy().tolist(), item.cpu().numpy().tolist()].todense()).squeeze().cuda()
     loss_update = F.binary_cross_entropy_with_logits(y, t)
+    
+    return loss_update, train_mat, loss_mean, lowest_ind_sorted
+
+
+def PLC(user, item, train_mat, y, t, drop_rate, relabel_ratio):
+    loss = F.binary_cross_entropy_with_logits(y, t, reduce = False)
+
+    loss_mul = loss * t
+    ind_sorted = np.argsort(loss_mul.cpu().data).cuda()
+    loss_sorted = loss[ind_sorted]
+
+    remember_rate = 1 - drop_rate
+    num_remember = int(remember_rate * len(loss_sorted))
+    # 筛选最高的其中一部分loss，重新打上标签，并加入训练集中训练
+    highest_ind_sorted = ind_sorted[int(((1-relabel_ratio)+relabel_ratio*remember_rate)*len(loss_sorted)):]
+    #翻转75%
+    # highest_ind_sorted = ind_sorted[int((0.25+0.75*remember_rate)*len(loss_sorted)):]
+    #全部翻转
+    # highest_ind_sorted = ind_sorted[int(remember_rate*len(loss_sorted)):]
+    #翻转10%
+    # highest_ind_sorted = ind_sorted[int((0.9+0.1*remember_rate)*len(loss_sorted)):]
+    #翻转50%
+    # highest_ind_sorted = ind_sorted[int((0.5+0.5*remember_rate)*len(loss_sorted)):]
+    #翻转75%
+    # highest_ind_sorted = ind_sorted[int((0.25+0.75*remember_rate)*len(loss_sorted)):]
+    #翻转最高的25%s
+    # highest_ind_sorted = ind_sorted[int((0.75+0.25*remember_rate)*len(loss_sorted)):]
+    
+    # 翻转loss高的部分samles的标签，只把0改成1
+    if len(highest_ind_sorted) > 0:
+        # 防止list为空
+        t[highest_ind_sorted[t[highest_ind_sorted] == 1]] = 0
+        train_mat[user[highest_ind_sorted].cpu().numpy().tolist(), item[highest_ind_sorted].cpu().numpy().tolist()] = t[highest_ind_sorted].cpu().numpy()
+
+    t = torch.tensor(train_mat[user.cpu().numpy().tolist(), item.cpu().numpy().tolist()].todense()).squeeze().cuda()
+    loss_update = F.binary_cross_entropy_with_logits(y, t)
+
+    return loss_update, train_mat
+
+def PLC_discard(user, item, train_mat, y, t, drop_rate, relabel_ratio):
+    loss = F.binary_cross_entropy_with_logits(y, t, reduce = False)
+
+    loss_mul = loss * t
+    ind_sorted = np.argsort(loss_mul.cpu().data).cuda()
+    loss_sorted = loss[ind_sorted]
+
+    remember_rate = 1 - drop_rate
+    num_remember = int(remember_rate * len(loss_sorted))
+    # 筛选最高的其中一部分loss，重新打上标签，并加入训练集中训练
+    highest_ind_sorted = ind_sorted[int(((1-relabel_ratio)+relabel_ratio*remember_rate)*len(loss_sorted)):]
+    # 示例：翻转25%
+    # highest_ind_sorted = ind_sorted[int((0.75+0.25*remember_rate)*len(loss_sorted)):]
+    saved_ind_sorted = ind_sorted[:num_remember]
+    final_ind = torch.concat((highest_ind_sorted, saved_ind_sorted))
+    
+    # 翻转loss高的部分samles的标签，只把0改成1
+    if len(highest_ind_sorted) > 0:
+        # 防止list为空
+        t[highest_ind_sorted[t[highest_ind_sorted] == 1]] = 0
+        train_mat[user[highest_ind_sorted].cpu().numpy().tolist(), item[highest_ind_sorted].cpu().numpy().tolist()] = t[highest_ind_sorted].cpu().numpy()
+
+    t = torch.tensor(train_mat[user.cpu().numpy().tolist(), item.cpu().numpy().tolist()].todense()).squeeze().cuda()
+    loss_update = F.binary_cross_entropy_with_logits(y[final_ind], t[final_ind])
 
     return loss_update, train_mat
 
